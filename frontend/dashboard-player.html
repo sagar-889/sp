@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Player Dashboard | SportsConnect</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Montserrat:wght@800;900&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        /* Local overrides or specific dashboard styles */
+        .section-content {
+            display: none;
+        }
+
+        .section-content.active {
+            display: block;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="dashboard-container">
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <a href="index.html" class="sidebar-logo">SPORTS<span>CONNECT</span></a>
+            <ul class="sidebar-menu">
+                <li><a href="#" class="nav-item active" data-target="bookings"><i class="fas fa-calendar-alt"></i>
+                        <span>My Bookings</span></a></li>
+                <li><a href="#" class="nav-item" data-target="find-turfs"><i class="fas fa-search"></i> <span>Find
+                            Turfs</span></a></li>
+                <li><a href="#" class="nav-item" data-target="payments"><i class="fas fa-credit-card"></i>
+                        <span>Payments</span></a></li>
+                <li><a href="#" class="nav-item" data-target="community"><i class="fas fa-users"></i>
+                        <span>Community</span></a></li>
+            </ul>
+            <div class="sidebar-footer">
+                <a href="index.html" class="feature-link"><i class="fas fa-sign-out-alt"></i> Logout</a>
+            </div>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <header class="dashboard-header">
+                <h2>Player Dashboard</h2>
+                <div class="user-profile">
+                    <span>John Doe</span>
+                    <div class="user-avatar">JD</div>
+                </div>
+            </header>
+
+            <!-- Stats Overview (Always Visible) -->
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <h4>Active Bookings</h4>
+                    <div class="value" id="activeBookingsCount">0</div>
+                </div>
+                <div class="stat-card">
+                    <h4>Total Played</h4>
+                    <div class="value">12</div>
+                </div>
+                <div class="stat-card">
+                    <h4>Wallet Balance</h4>
+                    <div class="value">$120</div>
+                </div>
+            </div>
+
+            <!-- SECTION: Bookings -->
+            <div id="bookings" class="section-content active">
+                <h3>My Bookings</h3>
+                <div class="data-table-container">
+                    <table class="data-table">
+                        <thead>
+                            <tr>
+                                <th>Turf Name</th>
+                                <th>Date</th>
+                                <th>Time</th>
+                                <th>Status</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+                        <tbody id="bookingsTableBody">
+                            <!-- Populated by JS -->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- SECTION: Find Turfs -->
+            <div id="find-turfs" class="section-content">
+                <h3>Available Turfs</h3>
+                <div class="stats-grid" id="availableTurfs">
+                    <!-- Populated by JS -->
+                </div>
+            </div>
+
+            <!-- SECTION: Payments -->
+            <div id="payments" class="section-content">
+                <h3>Payment History</h3>
+                <div class="data-table-container">
+                    <table class="data-table">
+                        <thead>
+                            <tr>
+                                <th>Transaction ID</th>
+                                <th>Description</th>
+                                <th>Date</th>
+                                <th>Amount</th>
+                                <th>Status</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>#TRX-9988</td>
+                                <td>Booking - Green Field Arena</td>
+                                <td>2025-12-08</td>
+                                <td>$50.00</td>
+                                <td><span class="status-badge status-confirmed">Completed</span></td>
+                            </tr>
+                            <tr>
+                                <td>#TRX-9987</td>
+                                <td>Wallet Top-up</td>
+                                <td>2025-12-01</td>
+                                <td>$100.00</td>
+                                <td><span class="status-badge status-confirmed">Completed</span></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- SECTION: Community -->
+            <div id="community" class="section-content">
+                <h3>Find Teammates</h3>
+                <p style="color:var(--text-gray); margin-bottom: 2rem;">Connect with players nearby.</p>
+                <div class="stats-grid">
+                    <div class="stat-card" style="text-align: center;">
+                        <div class="user-avatar"
+                            style="margin: 0 auto 1rem; width: 60px; height: 60px; font-size: 1.5rem; background: var(--accent-color);">
+                            AS</div>
+                        <h4>Alex Smith</h4>
+                        <p style="font-size: 0.9rem; color: var(--text-gray);">Football • Striker</p>
+                        <button class="btn btn-outline" style="margin-top: 1rem; width: 100%;">Connect</button>
+                    </div>
+                    <div class="stat-card" style="text-align: center;">
+                        <div class="user-avatar"
+                            style="margin: 0 auto 1rem; width: 60px; height: 60px; font-size: 1.5rem; background: #ff0055; color: white;">
+                            MR</div>
+                        <h4>Marcus Reed</h4>
+                        <p style="font-size: 0.9rem; color: var(--text-gray);">Basketball • Point Guard</p>
+                        <button class="btn btn-outline" style="margin-top: 1rem; width: 100%;">Connect</button>
+                    </div>
+                    <div class="stat-card" style="text-align: center;">
+                        <div class="user-avatar"
+                            style="margin: 0 auto 1rem; width: 60px; height: 60px; font-size: 1.5rem; background: #ffcc00; color: black;">
+                            DL</div>
+                        <h4>David Lee</h4>
+                        <p style="font-size: 0.9rem; color: var(--text-gray);">Tennis • Intermediate</p>
+                        <button class="btn btn-outline" style="margin-top: 1rem; width: 100%;">Connect</button>
+                    </div>
+                </div>
+            </div>
+
+        </main>
+    </div>
+
+    <script src="state.js"></script>
+    <script>
+        // Player Dashboard Logic
+        document.addEventListener('DOMContentLoaded', () => {
+            const userId = 'u1';
+
+            // Navigation Logic
+            const navItems = document.querySelectorAll('.nav-item');
+            const sections = document.querySelectorAll('.section-content');
+
+            navItems.forEach(item => {
+                item.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    // Remove active class from all
+                    navItems.forEach(nav => nav.classList.remove('active'));
+                    sections.forEach(sec => sec.classList.remove('active'));
+
+                    // Add active class to clicked
+                    item.classList.add('active');
+                    const targetId = item.getAttribute('data-target');
+                    document.getElementById(targetId).classList.add('active');
+                });
+            });
+
+            // Data Rendering
+            function renderBookings() {
+                const bookings = appState.getBookingsForUser(userId);
+                const tbody = document.getElementById('bookingsTableBody');
+                document.getElementById('activeBookingsCount').textContent = bookings.length;
+
+                tbody.innerHTML = '';
+                bookings.forEach(booking => {
+                    const turfName = appState.getTurfName(booking.turfId);
+                    const tr = document.createElement('tr');
+                    tr.innerHTML = `
+                        <td>${turfName}</td>
+                        <td>${booking.date}</td>
+                        <td>${booking.time}</td>
+                        <td><span class="status-badge status-${booking.status}">${booking.status}</span></td>
+                        <td>
+                            <button onclick="cancelBooking('${booking.id}')" class="btn-outline" style="padding: 0.5rem 1rem; font-size: 0.8rem;">Cancel</button>
+                        </td>
+                    `;
+                    tbody.appendChild(tr);
+                });
+            }
+
+            function renderTurfs() {
+                const turfs = appState.getTurfs();
+                const container = document.getElementById('availableTurfs');
+                container.innerHTML = '';
+
+                turfs.forEach(turf => {
+                    const card = document.createElement('div');
+                    card.className = 'stat-card';
+                    card.innerHTML = `
+                        <h4 style="font-size: 1.2rem; color: var(--primary-color);">${turf.name}</h4>
+                        <p style="color: var(--text-gray); margin-bottom: 1rem;"><i class="fas fa-map-marker-alt"></i> ${turf.location}</p>
+                        <p style="font-size: 1.5rem; font-weight: 700; margin-bottom: 1rem;">$${turf.price}<span style="font-size: 0.9rem; color: var(--text-gray)">/hr</span></p>
+                        <button onclick="bookTurf('${turf.id}')" class="btn btn-primary" style="width: 100%;">Book Turf</button>
+                    `;
+                    container.appendChild(card);
+                });
+            }
+
+            window.cancelBooking = (bookingId) => {
+                if (confirm('Are you sure you want to cancel?')) {
+                    appState.cancelBooking(bookingId);
+                    renderBookings();
+                }
+            };
+
+            window.bookTurf = (turfId) => {
+                window.location.href = `book-turf.html?turfId=${turfId}`;
+            };
+
+            renderBookings();
+            renderTurfs();
+        });
+    </script>
+</body>
+
+</html>
